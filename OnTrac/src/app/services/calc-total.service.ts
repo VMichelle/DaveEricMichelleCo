@@ -1,24 +1,21 @@
 import { Injectable } from '@angular/core';
-import {}
-
+import { courseList } from './course-list.service'
 @Injectable({
   providedIn: 'root'
 })
 export class CalcTotalService {
+  private courseLists: courseList[] = [];
 
-  constructor() { }
-  
-  
-  function totalclasses(){
-    var totalClass = 0
-    totalClass = courseList.length;
-  };
+  constructor(private courselist: CourseListService) { }
 
-  function totalcreds(){
-    var totalCredit = 0;
-    for(i=0; i<courseList.length; i++)
-    totalCredit += courseList[i].credit;
-    console.log(totalCredit);
-    };
-
+  getTotal() {
+    function total() {
+      var totalClass = 0
+      var totalCredit = 0;
+      totalClass = courseList.length;
+      for (i = 0; i < courseList.length; i++)
+        totalCredit += courseList[i].credit;
+    }
+    return 'Total Classes: ${totalClass} Total Credits: ${totalCredit}';
+  }
 }
